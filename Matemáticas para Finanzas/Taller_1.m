@@ -29,13 +29,12 @@ rAutosDinero = rank(AutosDinero);
 M1 = rref(AutosDinero); 
 X = Autos\Dinero;
 %Se vendieron 80 Autos tipo A, 50 tipo B y 10 tipo C.
+
 %%
 %Punto 4
 syms SalaA SalaB SalaC;
-[SalaA, SalaB]=solve(SalaA+2*SalaB+3*SalaC==200,2*SalaA+SalaB+3*SalaC==400,[SalaA SalaB]);
-%Tiene infinitas soluciones matemáticas pero sólo una solución aplicable a
-%la vida real. Cuando asisten 0 personas a C, 200 a A y 0 a B. De otro
-%modo, asistirian personas negativas a B y esto no es posible.
+[SalaA, SalaB, SalaC]=solve(SalaA+2*SalaB+3*SalaC==425, SalaA+SalaB+SalaC==200, 2*SalaA+SalaB+3*SalaC==400,[SalaA SalaB SalaC]);
+%A la Sala A atienden 50 personas, a la B 75 y a la C 75.
 
 %%
 %Punto 5
@@ -59,12 +58,16 @@ X2= M2\M3;
 
 %% Parte II
 syms E H Mc;
-[E, H]=solve(-E-1.5*H+0.5*Mc==350,1.5*E+0.5*H+Mc==600,[E H]);
-%a. No tiene la razón. Podría empezar a hacer situaciones hipoteticas hasta
-%que se satisfaga al cliente. El problema tiene multiples soluciones.
+[E, H]=solve(-E-1.5*H+0.5*Mc==-350,1.5*E+0.5*H+Mc==600,[E H]);
 
-%b. Si comprara 200 acciones de McDonalds tendría que comprar acciones
-%negativas de de Hilton Hotels y esto no es posible en la vida real.
+e=subs(E,200);
+h=subs(H, 200);
+%El comando subs(1,2), sustituye en la funcion 1, el valor 2.
+
+%a. Tiene razón pues la información que tiene es de un sistema
+%indeterminado.
+%b. Si comprara 200 acciones de McDonalds, compraría 157 acciones de Hilton
+%Hotels y 214 acciones de Eastern Airlines
 
 %% Parte VI
 syms x
@@ -77,5 +80,4 @@ s_prima=solve(diff(y));
 %La función toma su máxmimo cuando x vale -20. Lo que quiere decir que la producción
 %se maximiza cuando se producen 20 unidades negativas de 'x'. Esto no es
 %posible en la vida real, por lo que la opción más cercana es producir 0
-%unidades de 'x' y 12 de 'y'
-
+%unidades de 'x' y 12 de 'y'.
