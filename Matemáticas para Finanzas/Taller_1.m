@@ -1,6 +1,6 @@
 %Taller 1
 
-%%
+%% Parte I
 %Punto 1
 A=[4 3.5 4; 4 4 4.5; 3.5 4 3.5; 4 3.5 3.5; 3.5 4 4];
 wQ=[0.6 0.4 0.3;0.3 0.3 0.4; 0.1 0.3 0.3];
@@ -39,3 +39,43 @@ syms SalaA SalaB SalaC;
 
 %%
 %Punto 5
+syms ParteA ParteB ParteC;
+[ParteA, ParteB]=solve(ParteA+ParteB+ParteC==45000,0.02*ParteA+0.03*ParteB+0.05*ParteC==1100,[ParteA ParteB]);
+%El ejercicio tiene infinitas soluciones matemáticas. Por ejemplo, cuando
+%se invierte 0$ a 5% de interés se tiene una inversion en A y B de 25000 y
+%20000 respectivamente con un retorno total de 1100. Cuando se invierte 
+% 6000$ a 5% de interés se tiene una inversion en A y B de 37000 y
+%2000 respectivamente con un retorno total de 1100.
+
+%%
+%Punto 6
+M2 = [1 -1/4; 10 12];
+M3 = [0; 42000];
+M2M3=[M2 M3];
+M4=rref(M2M3);
+X2= M2\M3;
+%El fabricante debe vender al menos 724 unidades de A y 2897 unidades de B
+%para mantener la proporción.
+
+%% Parte II
+syms E H Mc;
+[E, H]=solve(-E-1.5*H+0.5*Mc==350,1.5*E+0.5*H+Mc==600,[E H]);
+%a. No tiene la razón. Podría empezar a hacer situaciones hipoteticas hasta
+%que se satisfaga al cliente. El problema tiene multiples soluciones.
+
+%b. Si comprara 200 acciones de McDonalds tendría que comprar acciones
+%negativas de de Hilton Hotels y esto no es posible en la vida real.
+
+%% Parte VI
+syms x
+y=sqrt(750-x^2-40*x)-15; %Establezco la función de la curva de Oferta
+ezplot(y, -40, 40) %Intervalo en el que quiero graficar: -2 y 4.
+grid
+
+s=solve(y);
+s_prima=solve(diff(y));
+%La función toma su máxmimo cuando x vale -20. Lo que quiere decir que la producción
+%se maximiza cuando se producen 20 unidades negativas de 'x'. Esto no es
+%posible en la vida real, por lo que la opción más cercana es producir 0
+%unidades de 'x' y 12 de 'y'
+
