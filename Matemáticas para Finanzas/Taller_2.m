@@ -12,17 +12,17 @@ Ex1p12=subs(Ex1p1, 2);
 Ex1p15=subs(Ex1p1, 5);
 %Cuando P=6
 Ex1p16=subs(Ex1p1, 6);
-%La demanda de x1 disminuye 0.25%, 1% y 1.5% cuando ante una variación de 1%
+%La demanda de x1 disminuye 0.25% (Inelástico), 1% (Unitaria) y 1.5%  (Elástica) cuando ante una variación de 1%
 %en el precio del bien x1 cuando el precio es 2, 5 y 6 respectivamente.
 
 %% Punto 2
 %Si p2+0.1x2=80 se puede reexpresar como p2=800-x2, ahora:
 syms x2
-p2=800-x2;
+p2=80-0.1*x2;
 c2=5000+20*x2;
 %Si la utilidad es ingresos menos costos entonces necesitamos i2
 %i2=p2*x2; que lo podemos reexpresar como 
-i2=800*x2-x2^2;
+i2=p2*x2;
 u2=i2-c2;
 u2_prima=diff(u2);
 %Cuando se producen 150 unidades, el costo marginal es de:
@@ -30,15 +30,15 @@ u2_prima150=subs(u2_prima, 150);
 %Cuando se producen 400 unidades, el costo marginal es de:
 u2_prima400=subs(u2_prima, 400);
 %Producir una unidad de más cuando se han prpducido 150 y 400 unidades,
-%genera una utilidad marginal de 480 y -20 respectivamente.
+%genera una utilidad marginal de 30 y -20 respectivamente.
 
 %% Punto 3
 syms x3
 c3=0.0001*x3^3-0.09*x3^2+20*x3+1200;
 c3_prima=diff(c3);
-c3_prima1000=subs(c3_prima,1000);
+c3_prima1=subs(c3_prima,1);
 %El costo de producir una unidad de más cuando se han producido 1000
-%unidades es de 140.
+%unidades es de 19.8203 unidades monetarias.
 
 %% Punto 4
 syms x4
@@ -61,14 +61,16 @@ p5_optimo=solve(u5_prima);
 %Dado el rango de producción de [100, 600]
 syms x6
 i6=x6^2-6*x6+17;
-ezplot(i6,100, 600)
+ezplot(i6,-6, 12)
 i6_prima=diff(i6);
 pc6=solve(i6_prima); %Hallamos el punto crítico en x=3
 i6_2prima=diff(i6,2); %2>0 el punto crítico es mínimo global. Y se
-% encuentra fuera del rango dado. Por tanto:
-i6100=subs(i6, 100);
-i6600=subs(i6, 600);
-%Los ingresos se encuentran entre [9417, 356417].
+% encuentra dentro del rango dado. Por tanto:
+i61=subs(i6, 1);
+i66=subs(i6, 6);
+i6_critico=subs(i6, 3);
+
+%Los ingresos se encuentran entre [8, 17].
 
 %% Punto 7
 %Si u7=i7-c7 (Porque la utilidad es igual a los ingresos menos los costos)
@@ -79,7 +81,11 @@ i6600=subs(i6, 600);
 
 syms A7
 x7=2000*(1-exp(-0.001*A7));
-
+i7=5*(x7);
+u7=i7-A7;
+u7_prima=diff(u7);
+A=double(solve(u7_prima));
+u7_optima=double(subs(u7, A));
 %% Punto 8
 syms x8
 c8=5*x8;
@@ -96,4 +102,7 @@ x8_optimo=pc8;
 u8_max=subs(u8, x8_optimo);
 %La utilidad máxima de la empresa es de 50$
 %% Punto 9
-
+syms x9
+c9=192000+2400000*x9^(-1)+0.15*x9;
+c9_prima=diff(c9);
+pc9=solve(c9_prima)

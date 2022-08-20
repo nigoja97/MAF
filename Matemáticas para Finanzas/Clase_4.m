@@ -1,3 +1,4 @@
+%% Clase 4
 %%Derivadas
 %Para encontrar el óptimo de la función se debe encontrar el punto donde la
 %derivada de la función es igual a 0.
@@ -30,7 +31,7 @@ Q_prima=diff(Q);
 EQ_p=double(p*Q_prima/Q);
 
 %Para determinar la elasticidad de la demanda se debe halla el valor
-%absoluto. Si el abs ess >1 es elástico, de lo contrario es inelástico. El
+%absoluto. Si el abs es >1 es elástico, de lo contrario es inelástico. El
 %signo determina la dirección de la elasticidad, si aumenta o disminuye la
 %demanda.
 

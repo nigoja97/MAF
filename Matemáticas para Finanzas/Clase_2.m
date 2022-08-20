@@ -1,3 +1,4 @@
+%% Clase 2
 %Sistemas de Ecuaciones Lineales (SEL)
 A=[3 -2 3;4 -3 1;1 5 -6]; %Matriz de Variables
 B=[2;-1;5]; %Términos Independientes
