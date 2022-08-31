@@ -17,8 +17,9 @@ hc1=hessian(c1);
 %Encuentre loos costos marginales cuando se producen 500 celulares tipo
 %basico (x1) y 100 del otro (y1).
 c1500100=subs(dc1x,{x1, y1},{500,100});
-%Interpretación: El costo de aumentar en 1 unidad los celulares tipo básico producidos
-%manteniendo la producción del otro tipo de celulares constante en 100
+%Interpretación: El costo de aumentar en 1 unidad la producción de 
+%celulares de tipo básico cuando ya se han producido 500 de este tipo 
+%manteniendo la producción del otro tipo de celulares constante en 100 
 %unidades es de 500 unidades monetarias.
 
 %% Optimización de funciones de varias variables.
